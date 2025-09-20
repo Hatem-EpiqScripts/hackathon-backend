@@ -1,0 +1,51 @@
+### Create User 1
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "userName": "Hatem Saleh",
+  "password": "password123",
+  "email": "hatem@gmail.com",
+  "userRole": "ADMIN"
+}
+
+### Create User 2
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "userName": "jack Smith",
+  "email": "steeve@example.com",
+  "password": "password1234",
+  "userRole": "techer"
+}
+
+### Create Professor 1
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "userName": "Dr. Emily Carter",
+  "email": "emily.carter@example.com",
+  "password": "teachme",
+  "userRole": "PROFESSOR"
+}
+
+### Create Professor 2
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "name": "Dr. James Lee",
+  "email": "james.lee@example.com",
+  "password": "lecture123",
+  "role": "PROFESSOR"
+}
+
+
+GET http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "james.lee@example.com",
+}

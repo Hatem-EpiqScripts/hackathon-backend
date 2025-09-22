@@ -20,12 +20,13 @@ export class User {
     enum: userRoleEnum,
     default: userRoleEnum.ADMIN,
   })
-  @Column()
   userRole: userRoleEnum;
 
   @Column({ unique: true })
   email: string;
 
+  @Column()
+  phone: string;
   // optional backrefs (not required unless needed)
   @OneToOne(() => Student, (student) => student.user)
   student: Student;

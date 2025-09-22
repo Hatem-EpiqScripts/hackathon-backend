@@ -1,5 +1,6 @@
 import {
   IsEmail,
+  IsPhoneNumber,
   IsEnum,
   IsNotEmpty,
   IsString,
@@ -11,15 +12,22 @@ import { userRoleEnum } from '@/common/enums/user-role-enum'; // ✅ with path a
 export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
-  name: string;
+  userName: string;
 
   @IsEmail()
+  @IsNotEmpty()
   email: string;
 
   @IsString()
   @MinLength(8)
   password: string;
 
+  @IsString()
+  @IsNotEmpty()
+  // @IsPhoneNumber()
+  phone: string;
+
   @IsEnum(userRoleEnum)
+  @IsNotEmpty()
   userRole: userRoleEnum;
 }

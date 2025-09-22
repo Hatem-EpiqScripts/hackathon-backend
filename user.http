@@ -25,10 +25,10 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "userName": "Dr. Emily Carter",
-  "email": "emily.carter@example.com",
-  "password": "teachme",
-  "userRole": "PROFESSOR"
+  "userName": "adam",
+  "email": "adam@example.com",
+  "password": "123123123",
+  "userRole": "student"
 }
 
 ### Create Professor 2
@@ -36,10 +36,11 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "name": "Dr. James Lee",
+  "userName": "Dr. James Lee",
   "email": "james.lee@example.com",
   "password": "lecture123",
-  "role": "PROFESSOR"
+  "phone": "123-456-7890",
+  "userRole": "PROFESSOR"
 }
 
 

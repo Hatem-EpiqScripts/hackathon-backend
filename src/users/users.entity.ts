@@ -25,7 +25,7 @@ export class User {
   @Column({ unique: true })
   email: string;
 
-  @Column()
+  @Column({ default: '8326664444' })
   phone: string;
   // optional backrefs (not required unless needed)
   @OneToOne(() => Student, (student) => student.user)

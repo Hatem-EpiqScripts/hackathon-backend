@@ -3,7 +3,9 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './users/users.module';
+import { CoursesModule } from './courses/courses.module';
 import { AuthModule } from './auth/auth.module';
+import { ProfessorsModule } from './professors/professors.module';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
@@ -17,6 +19,8 @@ import { AuthModule } from './auth/auth.module';
       synchronize: true, // Set to false in production!
     }),
     UserModule,
+    CoursesModule,
+    ProfessorsModule,
     AuthModule,
   ],
   controllers: [AppController],

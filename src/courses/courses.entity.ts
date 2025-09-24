@@ -26,9 +26,6 @@ export class Course {
   @ManyToOne(() => Professor, (professor) => professor.courses)
   professor: Professor;
 
-  @Column()
-  credits: number;
-
   @OneToMany(() => Enrollment, (enrollment) => enrollment.course)
   enrollments: Enrollment[];
 }

@@ -19,12 +19,6 @@ export class Professor {
   @JoinColumn()
   user: User;
 
-  @Column()
-  department: string;
-
-  @Column()
-  title: string;
-
   @OneToMany(() => Course, (course) => course.professor)
   courses: Course[];
 }

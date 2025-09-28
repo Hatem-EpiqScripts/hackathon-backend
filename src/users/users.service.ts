@@ -15,6 +15,7 @@ export class UserService {
 
   findAll(): Promise<User[]> {
     return this.usersRepository.find();
+    //this returns the password as well. in real apllication, I'd use DTO response.
   }
 
   findByEmail(email: string): Promise<User | null> {

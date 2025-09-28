@@ -10,7 +10,7 @@ async function bootstrap() {
   app.use(cookieParser());
 
   app.enableCors({
-    origin: 'http://localhost:4000', // Your frontend
+    origin: 'http://localhost:4000',
     credentials: true, // Optional: only if using auth headers/cookies
   });
 

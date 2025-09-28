@@ -1,0 +1,12 @@
+### post login
+POST http://localhost:/auth/login
+Content-Type: application/json
+
+{
+  "email": "hatem@gmail.com",
+    "password": "password123"
+}
+
+### getInfo
+GET http://localhost:3000/auth/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjgsImVtYWlsIjoiaGF0ZW1AZ21haWwuY29tIiwiaWF0IjoxNzU4NjQ0NjAzLCJleHAiOjE3NTg3MzEwMDN9.o1Y8rD7yFUjadv9V35mwSiFrV7AgYw_7_3NL57jgfhc

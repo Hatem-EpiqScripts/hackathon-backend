@@ -3,15 +3,16 @@ import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
 import { UserService } from './users.service';
 import { User } from './users.entity';
 import { CreateUserDto } from './dto/create-users.dto';
-import { AuthGuard } from '@/auth/guards/auth.guards'; // or jwt-auth.guard.ts
+import { AuthGuard } from '@/auth/guards/auth.guards';
 import { RolesGuard } from '@/auth/guards/roles.guard';
 import { userRoleEnum } from '@/common/enums/user-role-enum';
 import { Roles } from '@/auth/guards/roles.decorator';
+
 @Controller('users')
 export class UserController {
   constructor(private readonly userService: UserService) {}
   @UseGuards(AuthGuard, RolesGuard)
-  @Roles(userRoleEnum.ADMIN)
+  @Roles([userRoleEnum.ADMIN], 'only admins have access to all users')
   @Get()
   findAll(): Promise<User[]> {
     return this.userService.findAll();

@@ -3,12 +3,18 @@ import { UserService } from '@/users/users.service';
 import { JwtService } from '@nestjs/jwt';
 import { userRoleEnum } from '@/common/enums/user-role-enum';
 type AuthInput = { email: string; password: string };
-type SignInData = { userId: number; email: string; userRole: userRoleEnum };
+type SignInData = {
+  userId: number;
+  email: string;
+  userRole: userRoleEnum;
+  userName: string;
+};
 type AuthResult = {
   accessToken: string;
   userId: number;
   email: string;
   userRole: userRoleEnum;
+  userName: string;
 };
 
 @Injectable()
@@ -31,7 +37,12 @@ export class AuthService {
     const user = await this.userService.findByEmail(input.email);
 
     if (user && user.password === input.password) {
-      return { userId: user.id, email: user.email, userRole: user.userRole };
+      return {
+        userId: user.id,
+        email: user.email,
+        userRole: user.userRole,
+        userName: user.userName,
+      };
     }
     return null;
   }
@@ -44,6 +55,7 @@ export class AuthService {
     const payload = {
       sub: user.userId,
       email: user.email,
+      username: user.userName,
       role: dbUser.userRole,
     };
     const accessToken = await this.jwtService.signAsync(payload);
@@ -51,6 +63,7 @@ export class AuthService {
       accessToken,
       userId: user.userId,
       email: user.email,
+      userName: user.userName,
       userRole: user.userRole,
     };
   }

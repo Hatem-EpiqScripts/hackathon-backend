@@ -14,14 +14,21 @@ export class AuthGuard implements CanActivate {
     const request = context.switchToHttp().getRequest();
 
     let token: string | undefined;
-    const authHeader = request.headers.authorization;
-    if (authHeader?.startsWith('Bearer ')) {
-      token = authHeader.split(' ')[1];
-    }
 
-    if (!token && request.cookies?.token) {
+    // 1. Check cookie first
+    if (request.cookies?.token) {
       token = request.cookies.token;
     }
+
+    // 2. If no cookie, fall back to Authorization header
+    if (!token) {
+      const authHeader = request.headers.authorization;
+      if (authHeader?.startsWith('Bearer ')) {
+        token = authHeader.split(' ')[1];
+      }
+    }
+
+    //console.log('Resolved token:', token);
 
     if (!token) {
       throw new UnauthorizedException('No token provided');
@@ -29,14 +36,18 @@ export class AuthGuard implements CanActivate {
 
     try {
       const payload = await this.jwtService.verifyAsync(token);
+
       request.user = {
         userId: payload.sub,
         email: payload.email,
         role: payload.role,
+        username: payload.username,
       };
+
       return true;
     } catch (error) {
-      throw new UnauthorizedException();
+      console.error('JWT verification failed:', error.message);
+      throw new UnauthorizedException('Invalid or expired token');
     }
   }
 }

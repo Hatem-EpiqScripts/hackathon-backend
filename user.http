@@ -36,14 +36,14 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "userName": "Dr. James Lee",
-  "email": "james.lee@example.com",
+  "userName": "sara connor",
+  "email": "sara@example.com",
   "password": "lecture123",
-  "phone": "123-456-7890",
-  "userRole": "PROFESSOR"
+  "phone": "8324567890",
+  "userRole": "student"
 }
 
-
+### Get All Users
 GET http://localhost:3000/users
 Content-Type: application/json
 

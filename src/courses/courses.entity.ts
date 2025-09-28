@@ -17,7 +17,7 @@ export class Course {
   @Column()
   name: string;
 
-  @Column({ unique: true })
+  @Column()
   code: string;
 
   @Column('text')
